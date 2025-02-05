@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
 import * as React from 'react';
-import { extendTheme, styled } from '@mui/material/styles';
+import { extendTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
@@ -12,7 +12,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import Dashboard from '../dashboard/page';
 import Ganhos from '../ganhos/page';
 import Despesas from '../despesas/page';
-
 
 const NAVIGATION: Navigation = [
   {
@@ -37,7 +36,6 @@ const NAVIGATION: Navigation = [
   {
     kind: 'divider',
   },
-
 ];
 
 const demoTheme = extendTheme({
@@ -68,20 +66,8 @@ function useDemoRouter(initialPath: string): Router {
   return router;
 }
 
-const Skeleton = styled('div')<{ height: number }>(({ theme, height }) => ({
-  backgroundColor: theme.palette.action.hover,
-  borderRadius: theme.shape.borderRadius,
-  height,
-  content: '" "',
-}));
-
-export default function DashboardLayoutBasic(props: any) {
-  const { window } = props;
-
+export default function DashboardLayoutBasic() {
   const router = useDemoRouter('/dashboard');
-
-  // Remove this const when copying and pasting into your project.
-  const demoWindow = window ? window() : undefined;
 
   const renderContent = () => {
     switch (router.pathname) {
@@ -97,19 +83,11 @@ export default function DashboardLayoutBasic(props: any) {
   };
 
   return (
-    <AppProvider
-      navigation={NAVIGATION}
-      router={router}
-      theme={demoTheme}
-      window={demoWindow}
-    >
+    <AppProvider navigation={NAVIGATION} router={router} theme={demoTheme}>
       <DashboardLayout>
         <PageContainer>
           <Grid container spacing={1}>
-
-            <Grid size={12}>
-              {renderContent()}
-            </Grid>
+            <Grid size={12}>{renderContent()}</Grid>
           </Grid>
         </PageContainer>
       </DashboardLayout>
