@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { Container, Typography, TextField, Button, Box, Paper } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
