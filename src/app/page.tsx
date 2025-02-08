@@ -1,11 +1,11 @@
 "use client";
 
-import SignIn from "./inicio/page";
+import Cadastro from "./cadastro/page"
 
 export default function Home() {
   return (
     <>
-      <SignIn />
+    <Cadastro/>  
     </>
   );
 }
