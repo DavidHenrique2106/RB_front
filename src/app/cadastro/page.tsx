@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; 
 import { signup } from "@/services/AuthService";
 
 const Cadastro: React.FC = () => {
@@ -11,11 +12,14 @@ const Cadastro: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
+  const router = useRouter(); 
+
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await signup(name, email, password);
       alert("Cadastro realizado com sucesso!");
+      router.push("/inicio");   
     } catch (error) {
       setError("Erro ao cadastrar. Verifique os dados.");
     }

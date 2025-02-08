@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       await login(email, password);
-      router.push("/dashboard"); 
+      router.push("/inicio")
     } catch (error) {
       setError("Email ou senha incorretos");
     }
