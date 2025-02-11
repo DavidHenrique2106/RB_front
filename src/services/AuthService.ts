@@ -1,4 +1,4 @@
-export const API_URL = "http://127.0.0.1:8000"; 
+export const API_URL = "https://rb-back.onrender.com"; 
 
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export const signup = async (nome: string, email: string, senha: string) => {
     const data = await response.json();
     localStorage.setItem("token", data.token); 
 
-    router.push("/dashboard"); 
+    router.push("/inicio"); 
     return data;
   } catch (error) {
     console.error(error);
