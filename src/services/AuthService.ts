@@ -1,4 +1,4 @@
-export const API_URL = "http://127.0.0.1:8000"; 
+export const API_URL = "https://rb-back.onrender.com"; 
 
 export const signup = async (nome: string, email: string, senha: string) => {
    
