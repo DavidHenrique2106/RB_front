@@ -16,14 +16,16 @@ const Cadastro: React.FC = () => {
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Chamando signup com:", name, email, password);
     try {
       await signup(name, email, password);
       alert("Cadastro realizado com sucesso!");
-      router.push("/inicio");   
+      router.push("/inicio");
     } catch (error) {
       setError("Erro ao cadastrar. Verifique os dados.");
     }
   };
+  
 
   return (
     <Container maxWidth="xs">

@@ -1,12 +1,11 @@
-export const API_URL = "https://rb-back.onrender.com"; 
-
-import { useRouter } from "next/navigation";
+export const API_URL = "http://127.0.0.1:8000"; 
 
 export const signup = async (nome: string, email: string, senha: string) => {
-  const router = useRouter(); 
-
+   
   try {
-    const response = await fetch(`${API_URL}/usuarios/cadastrar`, {
+    console.log("Enviando dados:", { nome, email, senha });
+
+    const response = await fetch(`${API_URL}/usuarios/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,20 +13,24 @@ export const signup = async (nome: string, email: string, senha: string) => {
       body: JSON.stringify({ nome, email, senha }),
     });
 
+    const responseData = await response.json().catch(() => null);
+    console.log("Dados da resposta:", responseData);
+
     if (!response.ok) {
       throw new Error("Erro ao criar conta");
     }
 
-    const data = await response.json();
-    localStorage.setItem("token", data.token); 
+    localStorage.setItem("token", responseData.token);
+    
+    console.log("Cadastro bem-sucedido! Redirecionando...");
 
-    router.push("/inicio"); 
-    return data;
+    return responseData;
   } catch (error) {
-    console.error(error);
+    console.error("Erro ao cadastrar:", error);
     throw error;
   }
 };
+
 
 export const login = async (email: string, senha: string) => {
   const response = await fetch(`${API_URL}/usuarios/login`, { 
