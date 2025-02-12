@@ -8,14 +8,14 @@ import { login } from "@/services/AuthService";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [senha, setSenha] = useState<string>("");
   const [error, setError] = useState<string>("");
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      await login(email, senha);
       router.push("/inicio")
     } catch (error) {
       setError("Email ou senha incorretos");
@@ -53,8 +53,8 @@ const Login: React.FC = () => {
             variant="outlined"
             fullWidth
             margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
           />
 
           <Typography>

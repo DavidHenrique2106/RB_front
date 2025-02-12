@@ -39,6 +39,8 @@ export const login = async (email: string, senha: string) => {
   });
 
   if (!response.ok) {
+    const errorData = await response.json();
+    console.error(errorData);
     throw new Error("Credenciais inválidas");
   }
 
