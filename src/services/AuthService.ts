@@ -5,7 +5,7 @@ export const signup = async (nome: string, email: string, senha: string) => {
   try {
     console.log("Enviando dados:", { nome, email, senha });
 
-    const response = await fetch(`${API_URL}/usuarios/login`, {
+    const response = await fetch(`${API_URL}/usuarios/cadastrar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
